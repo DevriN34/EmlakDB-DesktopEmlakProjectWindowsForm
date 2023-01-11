@@ -1,0 +1,802 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="emlakDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ayarlar">
+          <Key>
+            <PropertyRef Name="resimKonum" />
+          </Key>
+          <Property Name="logKayitKonum" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="resimKonum" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Home2">
+          <Key>
+            <PropertyRef Name="EvID" />
+          </Key>
+          <Property Name="EvID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OdaSayisi" Type="int" />
+          <Property Name="KatNumarasi" Type="int" />
+          <Property Name="ToplamEvAlani" Type="int" />
+          <Property Name="YapimTarihi" Type="date" />
+          <Property Name="EvDurumu" Type="nvarchar" MaxLength="50" />
+          <Property Name="ilce_ID" Type="int" />
+          <Property Name="il_ID" Type="int" />
+          <Property Name="Fiyat" Type="money" />
+          <Property Name="CREATEDATE" Type="datetime" />
+          <Property Name="IS_FLAG" Type="tinyint" />
+          <Property Name="Depozito" Type="money" />
+          <Property Name="Kapora" Type="money" />
+          <Property Name="Sözleşme" Type="nvarchar" MaxLength="1" />
+          <Property Name="Caymabedeli" Type="money" />
+          <Property Name="Evresim" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="HomeDetails">
+          <Key>
+            <PropertyRef Name="HomedetailsID" />
+          </Key>
+          <Property Name="HomedetailsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EvID" Type="int" Nullable="false" />
+          <Property Name="PersonelID" Type="int" Nullable="false" />
+          <Property Name="CREATEDATE" Type="datetime" />
+          <Property Name="IS_FLAG" Type="tinyint" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="ilceler">
+          <Key>
+            <PropertyRef Name="ilce_ID" />
+          </Key>
+          <Property Name="ilce_ID" Type="int" Nullable="false" />
+          <Property Name="ilce_isim" Type="nvarchar" MaxLength="50" />
+          <Property Name="il_ID" Type="int" />
+          <Property Name="CREATEDATE" Type="datetime" />
+          <Property Name="IS_FLAG" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="iller">
+          <Key>
+            <PropertyRef Name="il_ID" />
+          </Key>
+          <Property Name="il_ID" Type="int" Nullable="false" />
+          <Property Name="il_isim" Type="varchar" MaxLength="50" />
+          <Property Name="CREATEDATE" Type="datetime" />
+          <Property Name="IS_FLAG" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="Kullanici">
+          <Key>
+            <PropertyRef Name="kullaniciID" />
+          </Key>
+          <Property Name="kullaniciAd" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="kullaniciSifre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="kullaniciID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="yetki" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Musteri">
+          <Key>
+            <PropertyRef Name="MusteriID" />
+          </Key>
+          <Property Name="MusteriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Soyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="EvID" Type="int" />
+          <Property Name="CREATEDATE" Type="datetime" />
+          <Property Name="IS_FLAG" Type="tinyint" />
+          <Property Name="TelefonNO" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Personel">
+          <Key>
+            <PropertyRef Name="PersonelID" />
+          </Key>
+          <Property Name="PersonelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonelAd" Type="nvarchar" MaxLength="250" />
+          <Property Name="PersonelSoyad" Type="nvarchar" MaxLength="250" />
+          <Property Name="TCKN" Type="nvarchar" MaxLength="11" />
+          <Property Name="CREATEDATE" Type="datetime" />
+          <Property Name="IS_FLAG" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'emlakDB.dbo.View_Home2_LIST' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Home2_LIST">
+          <Key>
+            <PropertyRef Name="EvID" />
+          </Key>
+          <Property Name="EvID" Type="int" Nullable="false" />
+          <Property Name="OdaSayisi" Type="int" />
+          <Property Name="KatNumarasi" Type="int" />
+          <Property Name="ToplamEvAlani" Type="int" />
+          <Property Name="YapimTarihi" Type="date" />
+          <Property Name="EvDurumu" Type="nvarchar" MaxLength="50" />
+          <Property Name="ilce_isim" Type="nvarchar" MaxLength="50" />
+          <Property Name="il_isim" Type="varchar" MaxLength="50" />
+          <Property Name="Fiyat" Type="money" />
+          <Property Name="Depozito" Type="money" />
+          <Property Name="Kapora" Type="money" />
+          <Property Name="Sözleşme" Type="nvarchar" MaxLength="1" />
+          <Property Name="Evresim" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'emlakDB.dbo.View_Home2Kiralik_LIST' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Home2Kiralik_LIST">
+          <Key>
+            <PropertyRef Name="EvID" />
+          </Key>
+          <Property Name="EvID" Type="int" Nullable="false" />
+          <Property Name="EvDurumu" Type="nvarchar" MaxLength="50" />
+          <Property Name="OdaSayisi" Type="int" />
+          <Property Name="KatNumarasi" Type="int" />
+          <Property Name="ToplamEvAlani" Type="int" />
+          <Property Name="YapimTarihi" Type="date" />
+          <Property Name="il_isim" Type="varchar" MaxLength="50" />
+          <Property Name="ilce_isim" Type="nvarchar" MaxLength="50" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="250" />
+          <Property Name="Evresim" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'emlakDB.dbo.View_Home2Satilik_LIST' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Home2Satilik_LIST">
+          <Key>
+            <PropertyRef Name="EvID" />
+          </Key>
+          <Property Name="EvID" Type="int" Nullable="false" />
+          <Property Name="EvDurumu" Type="nvarchar" MaxLength="50" />
+          <Property Name="OdaSayisi" Type="int" />
+          <Property Name="KatNumarasi" Type="int" />
+          <Property Name="ToplamEvAlani" Type="int" />
+          <Property Name="YapimTarihi" Type="date" />
+          <Property Name="il_isim" Type="varchar" MaxLength="50" />
+          <Property Name="ilce_isim" Type="nvarchar" MaxLength="50" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="250" />
+          <Property Name="Evresim" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'emlakDB.dbo.View_HomeDetails_LIST' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_HomeDetails_LIST">
+          <Key>
+            <PropertyRef Name="HomedetailsID" />
+            <PropertyRef Name="EvID" />
+          </Key>
+          <Property Name="HomedetailsID" Type="int" Nullable="false" />
+          <Property Name="EvID" Type="int" Nullable="false" />
+          <Property Name="PersonelAd" Type="nvarchar" MaxLength="250" />
+          <Property Name="PersonelSoyad" Type="nvarchar" MaxLength="250" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'emlakDB.dbo.View_ilceler_LIST' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_ilceler_LIST">
+          <Key>
+            <PropertyRef Name="ilce_ID" />
+          </Key>
+          <Property Name="ilce_ID" Type="int" Nullable="false" />
+          <Property Name="ilce_isim" Type="nvarchar" MaxLength="50" />
+          <Property Name="il_ID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'emlakDB.dbo.View_iller_LIST' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_iller_LIST">
+          <Key>
+            <PropertyRef Name="il_ID" />
+          </Key>
+          <Property Name="il_ID" Type="int" Nullable="false" />
+          <Property Name="il_isim" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'emlakDB.dbo.View_Musteri_LIST' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Musteri_LIST">
+          <Key>
+            <PropertyRef Name="MusteriID" />
+            <PropertyRef Name="EvID" />
+          </Key>
+          <Property Name="MusteriID" Type="int" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Soyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="EvID" Type="int" Nullable="false" />
+          <Property Name="TelefonNO" Type="nvarchar" MaxLength="50" />
+          <Property Name="Evresim" Type="nvarchar(max)" />
+          <Property Name="Fiyat" Type="money" />
+          <Property Name="Kapora" Type="money" />
+          <Property Name="Depozito" Type="money" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'emlakDB.dbo.View_Personel_LIST' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Personel_LIST">
+          <Key>
+            <PropertyRef Name="PersonelID" />
+          </Key>
+          <Property Name="PersonelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonelAd" Type="nvarchar" MaxLength="250" />
+          <Property Name="PersonelSoyad" Type="nvarchar" MaxLength="250" />
+          <Property Name="TCKN" Type="nvarchar" MaxLength="11" />
+        </EntityType>
+        <EntityContainer Name="emlakDBModelStoreContainer">
+          <EntitySet Name="ayarlar" EntityType="Self.ayarlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Home2" EntityType="Self.Home2" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HomeDetails" EntityType="Self.HomeDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ilceler" EntityType="Self.ilceler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="iller" EntityType="Self.iller" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kullanici" EntityType="Self.Kullanici" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Musteri" EntityType="Self.Musteri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personel" EntityType="Self.Personel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="View_Home2_LIST" EntityType="Self.View_Home2_LIST" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Home2_LIST].[EvID] AS [EvID], 
+    [View_Home2_LIST].[OdaSayisi] AS [OdaSayisi], 
+    [View_Home2_LIST].[KatNumarasi] AS [KatNumarasi], 
+    [View_Home2_LIST].[ToplamEvAlani] AS [ToplamEvAlani], 
+    [View_Home2_LIST].[YapimTarihi] AS [YapimTarihi], 
+    [View_Home2_LIST].[EvDurumu] AS [EvDurumu], 
+    [View_Home2_LIST].[ilce_isim] AS [ilce_isim], 
+    [View_Home2_LIST].[il_isim] AS [il_isim], 
+    [View_Home2_LIST].[Fiyat] AS [Fiyat], 
+    [View_Home2_LIST].[Depozito] AS [Depozito], 
+    [View_Home2_LIST].[Kapora] AS [Kapora], 
+    [View_Home2_LIST].[Sözleşme] AS [Sözleşme], 
+    [View_Home2_LIST].[Evresim] AS [Evresim]
+    FROM [dbo].[View_Home2_LIST] AS [View_Home2_LIST]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Home2Kiralik_LIST" EntityType="Self.View_Home2Kiralik_LIST" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Home2Kiralik_LIST].[EvID] AS [EvID], 
+    [View_Home2Kiralik_LIST].[EvDurumu] AS [EvDurumu], 
+    [View_Home2Kiralik_LIST].[OdaSayisi] AS [OdaSayisi], 
+    [View_Home2Kiralik_LIST].[KatNumarasi] AS [KatNumarasi], 
+    [View_Home2Kiralik_LIST].[ToplamEvAlani] AS [ToplamEvAlani], 
+    [View_Home2Kiralik_LIST].[YapimTarihi] AS [YapimTarihi], 
+    [View_Home2Kiralik_LIST].[il_isim] AS [il_isim], 
+    [View_Home2Kiralik_LIST].[ilce_isim] AS [ilce_isim], 
+    [View_Home2Kiralik_LIST].[Notes] AS [Notes], 
+    [View_Home2Kiralik_LIST].[Evresim] AS [Evresim]
+    FROM [dbo].[View_Home2Kiralik_LIST] AS [View_Home2Kiralik_LIST]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Home2Satilik_LIST" EntityType="Self.View_Home2Satilik_LIST" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Home2Satilik_LIST].[EvID] AS [EvID], 
+    [View_Home2Satilik_LIST].[EvDurumu] AS [EvDurumu], 
+    [View_Home2Satilik_LIST].[OdaSayisi] AS [OdaSayisi], 
+    [View_Home2Satilik_LIST].[KatNumarasi] AS [KatNumarasi], 
+    [View_Home2Satilik_LIST].[ToplamEvAlani] AS [ToplamEvAlani], 
+    [View_Home2Satilik_LIST].[YapimTarihi] AS [YapimTarihi], 
+    [View_Home2Satilik_LIST].[il_isim] AS [il_isim], 
+    [View_Home2Satilik_LIST].[ilce_isim] AS [ilce_isim], 
+    [View_Home2Satilik_LIST].[Notes] AS [Notes], 
+    [View_Home2Satilik_LIST].[Evresim] AS [Evresim]
+    FROM [dbo].[View_Home2Satilik_LIST] AS [View_Home2Satilik_LIST]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_HomeDetails_LIST" EntityType="Self.View_HomeDetails_LIST" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_HomeDetails_LIST].[HomedetailsID] AS [HomedetailsID], 
+    [View_HomeDetails_LIST].[EvID] AS [EvID], 
+    [View_HomeDetails_LIST].[PersonelAd] AS [PersonelAd], 
+    [View_HomeDetails_LIST].[PersonelSoyad] AS [PersonelSoyad], 
+    [View_HomeDetails_LIST].[Notes] AS [Notes]
+    FROM [dbo].[View_HomeDetails_LIST] AS [View_HomeDetails_LIST]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_ilceler_LIST" EntityType="Self.View_ilceler_LIST" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_ilceler_LIST].[ilce_ID] AS [ilce_ID], 
+    [View_ilceler_LIST].[ilce_isim] AS [ilce_isim], 
+    [View_ilceler_LIST].[il_ID] AS [il_ID]
+    FROM [dbo].[View_ilceler_LIST] AS [View_ilceler_LIST]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_iller_LIST" EntityType="Self.View_iller_LIST" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_iller_LIST].[il_ID] AS [il_ID], 
+    [View_iller_LIST].[il_isim] AS [il_isim]
+    FROM [dbo].[View_iller_LIST] AS [View_iller_LIST]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Musteri_LIST" EntityType="Self.View_Musteri_LIST" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Musteri_LIST].[MusteriID] AS [MusteriID], 
+    [View_Musteri_LIST].[Ad] AS [Ad], 
+    [View_Musteri_LIST].[Soyad] AS [Soyad], 
+    [View_Musteri_LIST].[EvID] AS [EvID], 
+    [View_Musteri_LIST].[TelefonNO] AS [TelefonNO], 
+    [View_Musteri_LIST].[Evresim] AS [Evresim], 
+    [View_Musteri_LIST].[Fiyat] AS [Fiyat], 
+    [View_Musteri_LIST].[Kapora] AS [Kapora], 
+    [View_Musteri_LIST].[Depozito] AS [Depozito]
+    FROM [dbo].[View_Musteri_LIST] AS [View_Musteri_LIST]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Personel_LIST" EntityType="Self.View_Personel_LIST" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Personel_LIST].[PersonelID] AS [PersonelID], 
+    [View_Personel_LIST].[PersonelAd] AS [PersonelAd], 
+    [View_Personel_LIST].[PersonelSoyad] AS [PersonelSoyad], 
+    [View_Personel_LIST].[TCKN] AS [TCKN]
+    FROM [dbo].[View_Personel_LIST] AS [View_Personel_LIST]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="emlakDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="emlakDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ayarlar" EntityType="emlakDBModel.ayarlar" />
+          <EntitySet Name="Home2" EntityType="emlakDBModel.Home2" />
+          <EntitySet Name="ilceler" EntityType="emlakDBModel.ilceler" />
+          <EntitySet Name="iller" EntityType="emlakDBModel.iller" />
+          <EntitySet Name="Kullanici" EntityType="emlakDBModel.Kullanici" />
+          <EntitySet Name="Musteri" EntityType="emlakDBModel.Musteri" />
+          <EntitySet Name="Personel" EntityType="emlakDBModel.Personel" />
+          <EntitySet Name="sysdiagrams" EntityType="emlakDBModel.sysdiagrams" />
+          <EntitySet Name="View_ilceler_LIST" EntityType="emlakDBModel.View_ilceler_LIST" />
+          <EntitySet Name="View_iller_LIST" EntityType="emlakDBModel.View_iller_LIST" />
+          <EntitySet Name="View_Personel_LIST" EntityType="emlakDBModel.View_Personel_LIST" />
+          <AssociationSet Name="FK_ilceler_iller" Association="emlakDBModel.FK_ilceler_iller">
+            <End Role="iller" EntitySet="iller" />
+            <End Role="ilceler" EntitySet="ilceler" />
+          </AssociationSet>
+          <EntitySet Name="HomeDetails" EntityType="emlakDBModel.HomeDetails" />
+          <EntitySet Name="View_HomeDetails_LIST" EntityType="emlakDBModel.View_HomeDetails_LIST" />
+          <EntitySet Name="View_Musteri_LIST" EntityType="emlakDBModel.View_Musteri_LIST" />
+          <EntitySet Name="View_Home2_LIST" EntityType="emlakDBModel.View_Home2_LIST" />
+          <EntitySet Name="View_Home2Kiralik_LIST" EntityType="emlakDBModel.View_Home2Kiralik_LIST" />
+          <EntitySet Name="View_Home2Satilik_LIST" EntityType="emlakDBModel.View_Home2Satilik_LIST" />
+        </EntityContainer>
+        <EntityType Name="ayarlar">
+          <Key>
+            <PropertyRef Name="resimKonum" />
+          </Key>
+          <Property Name="logKayitKonum" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="resimKonum" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Home2">
+          <Key>
+            <PropertyRef Name="EvID" />
+          </Key>
+          <Property Name="EvID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OdaSayisi" Type="Int32" />
+          <Property Name="KatNumarasi" Type="Int32" />
+          <Property Name="ToplamEvAlani" Type="Int32" />
+          <Property Name="YapimTarihi" Type="DateTime" Precision="0" />
+          <Property Name="EvDurumu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ilce_ID" Type="Int32" />
+          <Property Name="il_ID" Type="Int32" />
+          <Property Name="Fiyat" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+          <Property Name="IS_FLAG" Type="Byte" />
+          <Property Name="Depozito" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Kapora" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Sözleşme" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="Caymabedeli" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Evresim" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ilceler">
+          <Key>
+            <PropertyRef Name="ilce_ID" />
+          </Key>
+          <Property Name="ilce_ID" Type="Int32" Nullable="false" />
+          <Property Name="ilce_isim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="il_ID" Type="Int32" />
+          <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+          <Property Name="IS_FLAG" Type="Byte" />
+          <NavigationProperty Name="iller" Relationship="emlakDBModel.FK_ilceler_iller" FromRole="ilceler" ToRole="iller" />
+        </EntityType>
+        <EntityType Name="iller">
+          <Key>
+            <PropertyRef Name="il_ID" />
+          </Key>
+          <Property Name="il_ID" Type="Int32" Nullable="false" />
+          <Property Name="il_isim" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+          <Property Name="IS_FLAG" Type="Byte" />
+          <NavigationProperty Name="ilceler" Relationship="emlakDBModel.FK_ilceler_iller" FromRole="iller" ToRole="ilceler" />
+        </EntityType>
+        <EntityType Name="Kullanici">
+          <Key>
+            <PropertyRef Name="kullaniciID" />
+          </Key>
+          <Property Name="kullaniciAd" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="kullaniciSifre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="kullaniciID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="yetki" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Musteri">
+          <Key>
+            <PropertyRef Name="MusteriID" />
+          </Key>
+          <Property Name="MusteriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EvID" Type="Int32" />
+          <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+          <Property Name="IS_FLAG" Type="Byte" />
+          <Property Name="TelefonNO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Personel">
+          <Key>
+            <PropertyRef Name="PersonelID" />
+          </Key>
+          <Property Name="PersonelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonelAd" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PersonelSoyad" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TCKN" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+          <Property Name="IS_FLAG" Type="Byte" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="View_ilceler_LIST">
+          <Key>
+            <PropertyRef Name="ilce_ID" />
+          </Key>
+          <Property Name="ilce_ID" Type="Int32" Nullable="false" />
+          <Property Name="ilce_isim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="il_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="View_iller_LIST">
+          <Key>
+            <PropertyRef Name="il_ID" />
+          </Key>
+          <Property Name="il_ID" Type="Int32" Nullable="false" />
+          <Property Name="il_isim" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="View_Personel_LIST">
+          <Key>
+            <PropertyRef Name="PersonelID" />
+          </Key>
+          <Property Name="PersonelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonelAd" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PersonelSoyad" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="TCKN" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_ilceler_iller">
+          <End Type="emlakDBModel.iller" Role="iller" Multiplicity="0..1" />
+          <End Type="emlakDBModel.ilceler" Role="ilceler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="iller">
+              <PropertyRef Name="il_ID" />
+            </Principal>
+            <Dependent Role="ilceler">
+              <PropertyRef Name="il_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="HomeDetails">
+          <Key>
+            <PropertyRef Name="HomedetailsID" />
+          </Key>
+          <Property Name="HomedetailsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EvID" Type="Int32" Nullable="false" />
+          <Property Name="PersonelID" Type="Int32" Nullable="false" />
+          <Property Name="CREATEDATE" Type="DateTime" Precision="3" />
+          <Property Name="IS_FLAG" Type="Byte" />
+          <Property Name="Notes" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="View_HomeDetails_LIST">
+          <Key>
+            <PropertyRef Name="HomedetailsID" />
+            <PropertyRef Name="EvID" />
+          </Key>
+          <Property Name="HomedetailsID" Type="Int32" Nullable="false" />
+          <Property Name="EvID" Type="Int32" Nullable="false" />
+          <Property Name="PersonelAd" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PersonelSoyad" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="View_Musteri_LIST">
+          <Key>
+            <PropertyRef Name="MusteriID" />
+            <PropertyRef Name="EvID" />
+          </Key>
+          <Property Name="MusteriID" Type="Int32" Nullable="false" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EvID" Type="Int32" Nullable="false" />
+          <Property Name="TelefonNO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Evresim" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Fiyat" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Kapora" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Depozito" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="View_Home2_LIST">
+          <Key>
+            <PropertyRef Name="EvID" />
+          </Key>
+          <Property Name="EvID" Type="Int32" Nullable="false" />
+          <Property Name="OdaSayisi" Type="Int32" />
+          <Property Name="KatNumarasi" Type="Int32" />
+          <Property Name="ToplamEvAlani" Type="Int32" />
+          <Property Name="YapimTarihi" Type="DateTime" Precision="0" />
+          <Property Name="EvDurumu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ilce_isim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="il_isim" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fiyat" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Depozito" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Kapora" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Sözleşme" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="Evresim" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="View_Home2Kiralik_LIST">
+          <Key>
+            <PropertyRef Name="EvID" />
+          </Key>
+          <Property Name="EvID" Type="Int32" Nullable="false" />
+          <Property Name="EvDurumu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OdaSayisi" Type="Int32" />
+          <Property Name="KatNumarasi" Type="Int32" />
+          <Property Name="ToplamEvAlani" Type="Int32" />
+          <Property Name="YapimTarihi" Type="DateTime" Precision="0" />
+          <Property Name="il_isim" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ilce_isim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Evresim" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="View_Home2Satilik_LIST">
+          <Key>
+            <PropertyRef Name="EvID" />
+          </Key>
+          <Property Name="EvID" Type="Int32" Nullable="false" />
+          <Property Name="EvDurumu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OdaSayisi" Type="Int32" />
+          <Property Name="KatNumarasi" Type="Int32" />
+          <Property Name="ToplamEvAlani" Type="Int32" />
+          <Property Name="YapimTarihi" Type="DateTime" Precision="0" />
+          <Property Name="il_isim" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ilce_isim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Evresim" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="emlakDBModelStoreContainer" CdmEntityContainer="emlakDBEntities">
+          <EntitySetMapping Name="ayarlar">
+            <EntityTypeMapping TypeName="emlakDBModel.ayarlar">
+              <MappingFragment StoreEntitySet="ayarlar">
+                <ScalarProperty Name="resimKonum" ColumnName="resimKonum" />
+                <ScalarProperty Name="logKayitKonum" ColumnName="logKayitKonum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Home2">
+            <EntityTypeMapping TypeName="emlakDBModel.Home2">
+              <MappingFragment StoreEntitySet="Home2">
+                <ScalarProperty Name="Evresim" ColumnName="Evresim" />
+                <ScalarProperty Name="Caymabedeli" ColumnName="Caymabedeli" />
+                <ScalarProperty Name="Sözleşme" ColumnName="Sözleşme" />
+                <ScalarProperty Name="Kapora" ColumnName="Kapora" />
+                <ScalarProperty Name="Depozito" ColumnName="Depozito" />
+                <ScalarProperty Name="IS_FLAG" ColumnName="IS_FLAG" />
+                <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+                <ScalarProperty Name="Fiyat" ColumnName="Fiyat" />
+                <ScalarProperty Name="il_ID" ColumnName="il_ID" />
+                <ScalarProperty Name="ilce_ID" ColumnName="ilce_ID" />
+                <ScalarProperty Name="EvDurumu" ColumnName="EvDurumu" />
+                <ScalarProperty Name="YapimTarihi" ColumnName="YapimTarihi" />
+                <ScalarProperty Name="ToplamEvAlani" ColumnName="ToplamEvAlani" />
+                <ScalarProperty Name="KatNumarasi" ColumnName="KatNumarasi" />
+                <ScalarProperty Name="OdaSayisi" ColumnName="OdaSayisi" />
+                <ScalarProperty Name="EvID" ColumnName="EvID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ilceler">
+            <EntityTypeMapping TypeName="emlakDBModel.ilceler">
+              <MappingFragment StoreEntitySet="ilceler">
+                <ScalarProperty Name="IS_FLAG" ColumnName="IS_FLAG" />
+                <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+                <ScalarProperty Name="il_ID" ColumnName="il_ID" />
+                <ScalarProperty Name="ilce_isim" ColumnName="ilce_isim" />
+                <ScalarProperty Name="ilce_ID" ColumnName="ilce_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="iller">
+            <EntityTypeMapping TypeName="emlakDBModel.iller">
+              <MappingFragment StoreEntitySet="iller">
+                <ScalarProperty Name="IS_FLAG" ColumnName="IS_FLAG" />
+                <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+                <ScalarProperty Name="il_isim" ColumnName="il_isim" />
+                <ScalarProperty Name="il_ID" ColumnName="il_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kullanici">
+            <EntityTypeMapping TypeName="emlakDBModel.Kullanici">
+              <MappingFragment StoreEntitySet="Kullanici">
+                <ScalarProperty Name="yetki" ColumnName="yetki" />
+                <ScalarProperty Name="kullaniciID" ColumnName="kullaniciID" />
+                <ScalarProperty Name="kullaniciSifre" ColumnName="kullaniciSifre" />
+                <ScalarProperty Name="kullaniciAd" ColumnName="kullaniciAd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Musteri">
+            <EntityTypeMapping TypeName="emlakDBModel.Musteri">
+              <MappingFragment StoreEntitySet="Musteri">
+                <ScalarProperty Name="TelefonNO" ColumnName="TelefonNO" />
+                <ScalarProperty Name="IS_FLAG" ColumnName="IS_FLAG" />
+                <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+                <ScalarProperty Name="EvID" ColumnName="EvID" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="MusteriID" ColumnName="MusteriID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personel">
+            <EntityTypeMapping TypeName="emlakDBModel.Personel">
+              <MappingFragment StoreEntitySet="Personel">
+                <ScalarProperty Name="IS_FLAG" ColumnName="IS_FLAG" />
+                <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+                <ScalarProperty Name="TCKN" ColumnName="TCKN" />
+                <ScalarProperty Name="PersonelSoyad" ColumnName="PersonelSoyad" />
+                <ScalarProperty Name="PersonelAd" ColumnName="PersonelAd" />
+                <ScalarProperty Name="PersonelID" ColumnName="PersonelID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="emlakDBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_ilceler_LIST">
+            <EntityTypeMapping TypeName="emlakDBModel.View_ilceler_LIST">
+              <MappingFragment StoreEntitySet="View_ilceler_LIST">
+                <ScalarProperty Name="il_ID" ColumnName="il_ID" />
+                <ScalarProperty Name="ilce_isim" ColumnName="ilce_isim" />
+                <ScalarProperty Name="ilce_ID" ColumnName="ilce_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_iller_LIST">
+            <EntityTypeMapping TypeName="emlakDBModel.View_iller_LIST">
+              <MappingFragment StoreEntitySet="View_iller_LIST">
+                <ScalarProperty Name="il_isim" ColumnName="il_isim" />
+                <ScalarProperty Name="il_ID" ColumnName="il_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Personel_LIST">
+            <EntityTypeMapping TypeName="emlakDBModel.View_Personel_LIST">
+              <MappingFragment StoreEntitySet="View_Personel_LIST">
+                <ScalarProperty Name="TCKN" ColumnName="TCKN" />
+                <ScalarProperty Name="PersonelSoyad" ColumnName="PersonelSoyad" />
+                <ScalarProperty Name="PersonelAd" ColumnName="PersonelAd" />
+                <ScalarProperty Name="PersonelID" ColumnName="PersonelID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HomeDetails">
+            <EntityTypeMapping TypeName="emlakDBModel.HomeDetails">
+              <MappingFragment StoreEntitySet="HomeDetails">
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="IS_FLAG" ColumnName="IS_FLAG" />
+                <ScalarProperty Name="CREATEDATE" ColumnName="CREATEDATE" />
+                <ScalarProperty Name="PersonelID" ColumnName="PersonelID" />
+                <ScalarProperty Name="EvID" ColumnName="EvID" />
+                <ScalarProperty Name="HomedetailsID" ColumnName="HomedetailsID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_HomeDetails_LIST">
+            <EntityTypeMapping TypeName="emlakDBModel.View_HomeDetails_LIST">
+              <MappingFragment StoreEntitySet="View_HomeDetails_LIST">
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="PersonelSoyad" ColumnName="PersonelSoyad" />
+                <ScalarProperty Name="PersonelAd" ColumnName="PersonelAd" />
+                <ScalarProperty Name="EvID" ColumnName="EvID" />
+                <ScalarProperty Name="HomedetailsID" ColumnName="HomedetailsID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Musteri_LIST">
+            <EntityTypeMapping TypeName="emlakDBModel.View_Musteri_LIST">
+              <MappingFragment StoreEntitySet="View_Musteri_LIST">
+                <ScalarProperty Name="Depozito" ColumnName="Depozito" />
+                <ScalarProperty Name="Kapora" ColumnName="Kapora" />
+                <ScalarProperty Name="Fiyat" ColumnName="Fiyat" />
+                <ScalarProperty Name="Evresim" ColumnName="Evresim" />
+                <ScalarProperty Name="TelefonNO" ColumnName="TelefonNO" />
+                <ScalarProperty Name="EvID" ColumnName="EvID" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="MusteriID" ColumnName="MusteriID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Home2_LIST">
+            <EntityTypeMapping TypeName="emlakDBModel.View_Home2_LIST">
+              <MappingFragment StoreEntitySet="View_Home2_LIST">
+                <ScalarProperty Name="Evresim" ColumnName="Evresim" />
+                <ScalarProperty Name="Sözleşme" ColumnName="Sözleşme" />
+                <ScalarProperty Name="Kapora" ColumnName="Kapora" />
+                <ScalarProperty Name="Depozito" ColumnName="Depozito" />
+                <ScalarProperty Name="Fiyat" ColumnName="Fiyat" />
+                <ScalarProperty Name="il_isim" ColumnName="il_isim" />
+                <ScalarProperty Name="ilce_isim" ColumnName="ilce_isim" />
+                <ScalarProperty Name="EvDurumu" ColumnName="EvDurumu" />
+                <ScalarProperty Name="YapimTarihi" ColumnName="YapimTarihi" />
+                <ScalarProperty Name="ToplamEvAlani" ColumnName="ToplamEvAlani" />
+                <ScalarProperty Name="KatNumarasi" ColumnName="KatNumarasi" />
+                <ScalarProperty Name="OdaSayisi" ColumnName="OdaSayisi" />
+                <ScalarProperty Name="EvID" ColumnName="EvID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Home2Kiralik_LIST">
+            <EntityTypeMapping TypeName="emlakDBModel.View_Home2Kiralik_LIST">
+              <MappingFragment StoreEntitySet="View_Home2Kiralik_LIST">
+                <ScalarProperty Name="Evresim" ColumnName="Evresim" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="ilce_isim" ColumnName="ilce_isim" />
+                <ScalarProperty Name="il_isim" ColumnName="il_isim" />
+                <ScalarProperty Name="YapimTarihi" ColumnName="YapimTarihi" />
+                <ScalarProperty Name="ToplamEvAlani" ColumnName="ToplamEvAlani" />
+                <ScalarProperty Name="KatNumarasi" ColumnName="KatNumarasi" />
+                <ScalarProperty Name="OdaSayisi" ColumnName="OdaSayisi" />
+                <ScalarProperty Name="EvDurumu" ColumnName="EvDurumu" />
+                <ScalarProperty Name="EvID" ColumnName="EvID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Home2Satilik_LIST">
+            <EntityTypeMapping TypeName="emlakDBModel.View_Home2Satilik_LIST">
+              <MappingFragment StoreEntitySet="View_Home2Satilik_LIST">
+                <ScalarProperty Name="Evresim" ColumnName="Evresim" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="ilce_isim" ColumnName="ilce_isim" />
+                <ScalarProperty Name="il_isim" ColumnName="il_isim" />
+                <ScalarProperty Name="YapimTarihi" ColumnName="YapimTarihi" />
+                <ScalarProperty Name="ToplamEvAlani" ColumnName="ToplamEvAlani" />
+                <ScalarProperty Name="KatNumarasi" ColumnName="KatNumarasi" />
+                <ScalarProperty Name="OdaSayisi" ColumnName="OdaSayisi" />
+                <ScalarProperty Name="EvDurumu" ColumnName="EvDurumu" />
+                <ScalarProperty Name="EvID" ColumnName="EvID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

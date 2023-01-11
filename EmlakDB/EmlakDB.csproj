@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3283DD42-1F38-4F6C-BD4D-D829EA2D5318}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>EmlakDB</RootNamespace>
+    <AssemblyName>EmlakDB</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FRMDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRMDetails.Designer.cs">
+      <DependentUpon>FRMDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FRMHOME.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRMHOME.Designer.cs">
+      <DependentUpon>FRMHOME.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FRMMUSTERI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRMMUSTERI.Designer.cs">
+      <DependentUpon>FRMMUSTERI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FRMPortfoy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRMPortfoy.Designer.cs">
+      <DependentUpon>FRMPortfoy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MAIN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MAIN.Designer.cs">
+      <DependentUpon>MAIN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\222Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>222Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\222Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>222Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\222Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>222Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ayarlar.cs">
+      <DependentUpon>222Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\Home2.cs">
+      <DependentUpon>222Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\Home2cs.cs" />
+    <Compile Include="Service\HomeDetails.cs">
+      <DependentUpon>222Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\HomeDetailscs.cs" />
+    <Compile Include="Service\ilceler.cs">
+      <DependentUpon>222Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ilcelercscs.cs" />
+    <Compile Include="Service\ilcs.cs" />
+    <Compile Include="Service\iller.cs">
+      <DependentUpon>222Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\Kullanici.cs">
+      <DependentUpon>222Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\Musteri.cs">
+      <DependentUpon>222Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\Musterics.cs" />
+    <Compile Include="Service\Personel.cs">
+      <DependentUpon>222Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\Personelcs.cs" />
+    <Compile Include="Service\sysdiagrams.cs">
+      <DependentUpon>222Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\View_Home2Kiralik_LIST.cs">
+      <DependentUpon>222Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\View_Home2Satilik_LIST.cs">
+      <DependentUpon>222Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\View_Home2_LIST.cs">
+      <DependentUpon>222Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\View_HomeDetails_LIST.cs">
+      <DependentUpon>222Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\View_ilceler_LIST.cs">
+      <DependentUpon>222Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\View_iller_LIST.cs">
+      <DependentUpon>222Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\View_Musteri_LIST.cs">
+      <DependentUpon>222Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\View_Personel_LIST.cs">
+      <DependentUpon>222Model1.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FRMDetails.resx">
+      <DependentUpon>FRMDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRMHOME.resx">
+      <DependentUpon>FRMHOME.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRMMUSTERI.resx">
+      <DependentUpon>FRMMUSTERI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRMPortfoy.resx">
+      <DependentUpon>FRMPortfoy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MAIN.resx">
+      <DependentUpon>MAIN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EntityDeploy Include="Service\222Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>222Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Service\222Model1.edmx.diagram">
+      <DependentUpon>222Model1.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Service\222Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>222Model1.edmx</DependentUpon>
+      <LastGenOutput>222Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Service\222Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>222Model1.edmx</DependentUpon>
+      <LastGenOutput>222Model1.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

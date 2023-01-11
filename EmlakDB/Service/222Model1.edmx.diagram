@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ecd69e511cc545d8bed9db850e6217c6" Name="Diagram1" ZoomLevel="71">
+        <EntityTypeShape EntityType="emlakDBModel.ayarlar" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="emlakDBModel.Home2" Width="1.5" PointX="3.25" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="emlakDBModel.ilceler" Width="1.5" PointX="3" PointY="4.875" />
+        <EntityTypeShape EntityType="emlakDBModel.iller" Width="1.5" PointX="0.75" PointY="5" />
+        <EntityTypeShape EntityType="emlakDBModel.Kullanici" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="emlakDBModel.Musteri" Width="1.5" PointX="5.625" PointY="4.125" />
+        <EntityTypeShape EntityType="emlakDBModel.Personel" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="emlakDBModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="7.75" />
+        <EntityTypeShape EntityType="emlakDBModel.View_ilceler_LIST" Width="1.875" PointX="8" PointY="5" />
+        <EntityTypeShape EntityType="emlakDBModel.View_iller_LIST" Width="1.5" PointX="9.75" PointY="7.75" />
+        <EntityTypeShape EntityType="emlakDBModel.View_Personel_LIST" Width="1.5" PointX="10.75" PointY="10.75" />
+        <AssociationConnector Association="emlakDBModel.FK_ilceler_iller" />
+        <EntityTypeShape EntityType="emlakDBModel.HomeDetails" Width="1.5" PointX="2.375" PointY="12.75" />
+        <EntityTypeShape EntityType="emlakDBModel.View_HomeDetails_LIST" Width="1.5" PointX="12.375" PointY="7.75" />
+        <EntityTypeShape EntityType="emlakDBModel.View_Musteri_LIST" Width="1.5" PointX="7.75" PointY="11.125" />
+        <EntityTypeShape EntityType="emlakDBModel.View_Home2_LIST" Width="2.5" PointX="4.375" PointY="8.75" />
+        <EntityTypeShape EntityType="emlakDBModel.View_Home2Kiralik_LIST" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="emlakDBModel.View_Home2Satilik_LIST" Width="1.5" PointX="10.75" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
